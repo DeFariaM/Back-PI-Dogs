@@ -6,11 +6,13 @@ const getDogsByIDHandler = require("../Handlers/getDogByIDHandler");
 const postDogsHandler = require("../Handlers/postDogsHandler");
 const getTempHandler = require("../Handlers/getTempHandler");
 const getAllDogsHandler = require("../Handlers/getAllDogsHandler");
+const getDogsByNameHandler = require("../Handlers/getDogsByNameHandler");
 
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
+router.get("/dogs", getDogsByNameHandler);
 router.get("/dogs", getAllDogsHandler);
 router.get("/dogs/:id", getDogsByIDHandler);
 router.post("/dogs", postDogsHandler);
