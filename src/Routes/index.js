@@ -12,7 +12,7 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.get("/dogs", getDogsByNameHandler);
+router.get("/name", getDogsByNameHandler);
 router.get("/dogs", getAllDogsHandler);
 router.get("/dogs/:id", getDogsByIDHandler);
 router.post("/dogs", postDogsHandler);
