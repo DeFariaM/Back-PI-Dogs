@@ -13,6 +13,10 @@ const getDogsAPI = async () => {
 
     const weight = dog.weight.metric.split(" - ");
     const height = dog.height.metric.split(" - ");
+    const lifeSpan = dog.life_span.split(" ");
+    const lifeMin = lifeSpan[0];
+    const lifeMax = isNaN(lifeSpan[2]) ? lifeMin : lifeSpan[2];
+
     const dogFilter = {
       id: dog.id,
       name: dog.name,
@@ -20,11 +24,13 @@ const getDogsAPI = async () => {
       weight_max: weight[1] !== null ? Number(weight[1]) : weight_min,
       height_min: Number(height[0]),
       height_max: height[1] !== null ? Number(height[1]) : height_min,
-      life_span: dog.life_span,
+      life_span: lifeMin + " - " + lifeMax,
+
       reference_image_id: `https://cdn2.thedogapi.com/images/${dog.reference_image_id}.jpg`,
       created: false,
       Temperaments: temps,
     };
+
     return dogFilter;
   });
 
