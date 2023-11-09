@@ -2,10 +2,16 @@ const getDogsAPI = require("../Gets/getDogsAPI");
 const getDogsDB = require("../Gets/getDogsDB");
 
 const getAllDogs = async () => {
-  const API = await getDogsAPI();
-  const DB = await getDogsDB();
+  try {
+    const API = await getDogsAPI();
+    const DB = await getDogsDB();
 
-  return [...API, ...DB];
+    if (!API.length && !DB.length) throw new Error("The doggies wasn't found");
+
+    return [...API, ...DB];
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };
 
 module.exports = getAllDogs;

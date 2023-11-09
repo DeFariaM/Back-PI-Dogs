@@ -22,7 +22,10 @@ const postDogsHandler = async (req, res) => {
       reference_image_id,
       temperament
     );
-    return res.status(200).json(createdDog);
+
+    return res
+      .status(200)
+      .json({ message: "Your dog was created succesfully" });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }

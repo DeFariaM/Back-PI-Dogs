@@ -4,21 +4,27 @@ require("dotenv").config();
 const { API_KEY } = process.env;
 
 const getTemperaments = async () => {
-  const { data } = await axios.get(
-    `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
-  );
-  const temp = await data.map((dog) => dog.temperament);
-  const separate = await temp.join().split(",");
-  const trimed = await separate.map((el) => el.trim());
-  /* console.log(trimed); */
+  try {
+    const { data } = await axios.get(
+      `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
+    );
+    const temp = await data.map((dog) => dog.temperament);
+    const separate = await temp.join().split(",");
+    const trimed = await separate.map((el) => el.trim());
+    /* console.log(trimed); */
 
-  await trimed.forEach((temp) => {
-    temp !== "" && Temperament.findOrCreate({ where: { name: temp } });
-  });
+    await trimed.forEach((temp) => {
+      temp !== "" && Temperament.findOrCreate({ where: { name: temp } });
+    });
 
-  const allTemps = await Temperament.findAll();
+    const allTemps = await Temperament.findAll();
 
-  return allTemps;
+    if (!allTemps.length) throw new Error("This can't be found yet");
+
+    return allTemps;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };
 
 module.exports = getTemperaments;
