@@ -1,4 +1,4 @@
-require("dotenv").config;
+require("dotenv").config();
 const { API_KEY } = process.env;
 const axios = require("axios");
 
@@ -25,8 +25,7 @@ const getDogsAPI = async () => {
       height_min: Number(height[0]),
       height_max: height[1] !== null ? Number(height[1]) : height_min,
       life_span: lifeMin + " - " + lifeMax,
-
-      reference_image_id: `https://cdn2.thedogapi.com/images/${dog.reference_image_id}.jpg`,
+      image: dog.image.url,
       created: false,
       Temperaments: temps,
     };

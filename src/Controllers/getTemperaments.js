@@ -11,7 +11,6 @@ const getTemperaments = async () => {
     const temp = await data.map((dog) => dog.temperament);
     const separate = await temp.join().split(",");
     const trimed = await separate.map((el) => el.trim());
-    /* console.log(trimed); */
 
     await trimed.forEach((temp) => {
       temp !== "" && Temperament.findOrCreate({ where: { name: temp } });

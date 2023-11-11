@@ -36,7 +36,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      reference_image_id: {
+      image: {
         type: DataTypes.STRING,
         defaultValue:
           "https://img.buzzfeed.com/buzzfeed-static/static/2020-10/6/16/campaign_images/9232fa5697f6/solo-alguien-que-realmente-ama-a-los-perritos-va--2-9794-1602001787-17_dblbig.jpg?resize=1200:*",
