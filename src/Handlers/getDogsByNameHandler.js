@@ -3,7 +3,6 @@ const getDogsByName = require("../Controllers/getDogsByName");
 const getDogsByNameHandler = async (req, res) => {
   try {
     const { name } = req.query;
-    /*  const lowName = name.toLowerCase(); */
 
     const response = await getDogsByName(name);
     return res.status(200).json(response);
