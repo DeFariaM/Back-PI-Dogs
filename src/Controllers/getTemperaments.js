@@ -20,9 +20,9 @@ const getTemperaments = async () => {
       });
       const all = await Temperament.findAll();
       return all;
+    } else {
+      return allTemps;
     }
-
-    return allTemps;
   } catch (error) {
     throw new Error(error.message);
   }
