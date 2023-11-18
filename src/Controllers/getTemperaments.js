@@ -18,6 +18,8 @@ const getTemperaments = async () => {
       await trimed.forEach((temp) => {
         temp !== "" && Temperament.findOrCreate({ where: { name: temp } });
       });
+      const all = await Temperament.findAll();
+      return all;
     }
 
     return allTemps;
