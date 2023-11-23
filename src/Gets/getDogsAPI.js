@@ -9,7 +9,9 @@ const getDogsAPI = async () => {
 
   const dogsAPI = await data.map((dog) => {
     const temperaments = dog.temperament;
-    const temps = temperaments ? temperaments.split(", ") : [];
+    const temps = temperaments
+      ? temperaments.split(", ")
+      : ["No registered temperaments"];
 
     const weight = dog.weight.metric.split(" - ");
     const height = dog.height.metric.split(" - ");
